@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #container
+        {
+            margin-top: 30px;
+            width:80%;
+            height:50%;
+            background-color: whitesmoke;
+            border: 5px solid black;
+            padding-bottom: 250px;
+        }
+        #p1
+        {
+            color:red;
+        }
+    </style>
+</head>
+<body>
+  <center>
+
+    <input type="text" id="inp1" placeholder="Enter your name" required>
+    <button onclick="fun2()">submit</button>
+    <button onclick="fun1('container')" disabled id="btn1">Download certificate</button>
+    <h3>Certificate preview</h3>
+    <div id="container">
+        <center>
+            <div class="contaner1">
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+            <h1>✨✨Hurrah! you have earned it✨✨</h1>
+        <img src="OIP.jpg" height="100px",width="200px">
+        <h2 id="p1"></h2> 
+        <h3>This Certificate is awarded to you for successful complition this exam.</h3> 
+        <h3>Your score:</h3>
+        <h4></h4>
+        <p>Awarded by:Rajib Paul</p>
+        
+    </div>
+       </center> 
+    </div>
+    
+</center>
+    <script type="text/javascript">
+        function fun2()
+        { 
+            
+            var a=document.getElementById("inp1").value;
+            if (a=='')
+            {
+                alert("please provide your name")
+            }
+            else
+            {
+            alert("successfully submitted");
+            document.getElementById("p1").innerHTML=a;
+
+
+            if ('speechSynthesis' in window) { 
+            let working = new SpeechSynthesisUtterance("congratulation "+a); 
+            window.speechSynthesis.speak(working); 
+            } 
+            else{ 
+            alert("Browser doesnot support voice method");
+            } 
+            document.getElementById("btn1").disabled = false;
+            } 
+        }
+    function fun1(paravalue)
+    {
+        var backup=document.body.innerHTML;
+        var divcontent=document.getElementById(paravalue).innerHTML;
+        document.body.innerHTML=divcontent;
+        window.print();
+        document.body.innerHTML=backup;
+    }
+    </script>
+</body>
+</html>
