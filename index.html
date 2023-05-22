@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Give exam</title>
+    <link rel="shortcut icon" type="image/png" href="logo.png">
+    <style>
+
+    body 
+    {
+    background-image: url('img1.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed; 
+    background-size: 100% 100%;
+    
+    }
+
+    #stopwatch-container {
+    width: 80%;
+    margin: 6% auto;
+    padding: 5% 0;
+    color: #e7eafb;
+    text-align: center;
+    background-color: #202020;
+    box-shadow: 1px 0px 4px 2px #9c9a9a;
+    border-radius: 20px;
+   }
+ 
+   #stopwatch {
+    font-size: 20px;
+    margin-bottom: 10px;
+   }
+   .st1
+   {
+    color: red;
+   }
+    </style>
+</head>
+<body>
+    <audio src="clapmusic.wav" id="music1" controls hidden></audio>
+    <center><h1>Welcome to <em>Give exam</em> website.Qualify exam and earn certificate.</h1>
+        <h3 class="st1">Note:Download instruction first then give exam.</h3>
+        <a href="instruction.txt" download>download instruction</a>
+    <div id="stopwatch-container">
+        <h1>Stopwatch for checking time</h1>
+        <div id="stopwatch">00:00:00</div>
+        <button onclick="start(true)" id="start-btn" >Start exam</button>
+        <br>
+        <br>
+        <p id="p1">Your question will appear here after pressing start button</p>
+        <input type="text" placeholder="enter question no 1 ans" id="inp1">
+        <br>
+        <br>
+        <p id="p2">Your question will appear here after pressing start button</p>
+        <input type="text" placeholder="enter question no 2 ans" id="inp2">
+        <br>
+        <br>
+        <p id="p3">Your question will appear here after pressing start button</p>
+        <input type="text" placeholder="enter question no 3 ans" id="inp3">
+        <br>
+        <br>
+        <p id="p4">Your question will appear here after pressing start button</p>
+        <input type="text" placeholder="enter question no 4 ans" id="inp4">
+        <br>
+        <br>
+        <p id="p5">Your question will appear here after pressing start button</p>
+        <input type="text" placeholder="enter question no 5 ans" id="inp5">
+        <br>
+        <br>
+        <p id="p6">Your question will appear here after pressing start button</p>
+        <input type="text" placeholder="enter question no 6 ans" id="inp6">
+        <br>
+        <br>
+        <p id="p7">Your question will appear here after pressing start button</p>
+        <input type="text" placeholder="enter question no 7 ans" id="inp7">
+        <br>
+        <br>
+        <p id="p8">Your question will appear here after pressing start button</p>
+        <input type="text" placeholder="enter question no 8 ans" id="inp8">
+        <br>
+        <br>
+        <p id="p9">Your question will appear here after pressing start button</p>
+        <input type="text" placeholder="enter question no 9 ans" id="inp9">
+        <br>
+        <br>
+        <p id="p10">Your question will appear here after pressing start button</p>
+        <input type="text" placeholder="enter question no 10 ans" id="inp10">
+        <br>
+        <br>
+        <button onclick="pause()" >End exam</button>
+        <button disabled id="btn1" style="cursor: not-allowed;" onclick="fun1()">download certificate</button>
+        <br>
+        <br>
+        <p id="p11">your result will appear here</p>
+    </div>
+    
+</center>
+    <script type="text/javascript">
+    document.addEventListener('contextmenu', event => event.preventDefault());//this will disable left click  
+    var stopwatch = document.getElementById("stopwatch");
+    var startBtn = document.getElementById("start-btn");
+    var timeoutId = null;
+    var ms = 0;
+    var sec = 0;
+     var min = 0;
+ 
+/* function to start stopwatch */
+   function start(flag) 
+   {
+
+    document.getElementById("p1").innerHTML="what is 5+6";
+    document.getElementById("p2").innerHTML="what is 6+6";
+    document.getElementById("p3").innerHTML="what is 6+7";
+    document.getElementById("p4").innerHTML="what is 7+7";
+    document.getElementById("p5").innerHTML="what is 7+8";
+    document.getElementById("p6").innerHTML="what is 8+8";
+    document.getElementById("p7").innerHTML="what is 8+9";
+    document.getElementById("p8").innerHTML="what is 9+9";
+    document.getElementById("p9").innerHTML="what is 9+10";
+    document.getElementById("p10").innerHTML="what is 10+11";
+    if (flag) {
+        startBtn.disabled = true;
+    }
+ 
+    timeoutId = setTimeout(function() {
+        ms = parseInt(ms);
+        sec = parseInt(sec);
+        min = parseInt(min);
+ 
+        ms++;
+ 
+        if (ms == 100) {
+            sec = sec + 1;
+            ms = 0;
+        }
+        if (sec == 60) {
+            min = min + 1;
+            sec = 0;
+        }
+        if (ms < 10) {
+            ms = '0' + ms;
+        }
+        if (sec < 10) {
+            sec = '0' + sec;
+        }
+        if (min < 10) {
+            min = '0' + min;
+        }
+ 
+        stopwatch.innerHTML = min + ':' + sec + ':' + ms;
+ 
+        // calling start() function recursivly to continue stopwatch
+        start();
+ 
+    }, 10); // setTimeout delay time 10 milliseconds
+}
+ 
+/* function to pause stopwatch */
+function pause() {
+    
+    clearTimeout(timeoutId);
+    startBtn.disabled = true;
+
+    var a=document.getElementById("inp1").value;
+    var b=document.getElementById("inp2").value;
+    var c=document.getElementById("inp3").value;
+    var d=document.getElementById("inp4").value;
+    var e=document.getElementById("inp5").value;
+    var f=document.getElementById("inp6").value;
+    var g=document.getElementById("inp7").value;
+    var h=document.getElementById("inp8").value;
+    var i=document.getElementById("inp9").value;
+    var j=document.getElementById("inp10").value;
+
+    var k=document.getElementById("stopwatch").innerHTML;
+   var m=k.split(":");
+   if (parseInt(m[0])<=10)
+   {
+    const l = ["11", "12", "13",'14','15','16','17','18','19','21'];
+    var s=0;
+    for(let i=0;i<10;i++)
+    {
+      if(l[i]==a || l[i]==b || l[i]==c || l[i]==d || l[i]==e || l[i]==f || l[i]==g || l[i]==h || l[i]==i || l[i]==j )
+      {
+        s=s+1;
+      }
+    }
+    if(l[9]==j)
+    {
+        s=s+1;
+    }
+    else
+    {
+        s=s;
+    }
+    if(s<5)
+    {
+        alert("your are not eligible for certificate")
+    }
+    else{
+        var n;
+        if(s==5)
+        {
+            n='g5';
+        }
+        else if(s==6)
+        {
+            n='h111';
+        }
+        else if(s==7)
+        {
+            n='ao1';
+        }
+        else if(s==8)
+        {
+            n='a31';
+        }
+        else if(s==9)
+        {
+             n='m05'
+        }
+        else if(s==10)
+        {
+            n='ki3';
+        }
+        else
+        {
+            console.log("developer fault");
+        }
+   document.getElementById("p11").innerHTML="time taken: "+k+"  "+"your code: "+n;
+   document.getElementById("btn1").disabled = false;
+   document.getElementById("btn1").style.cursor ="pointer";
+   }
+}
+else
+{
+    alert("you have exceed the time limit");
+}
+}
+ function fun1()
+ {
+    alert("🎊congratulation! you can download certificate now.")
+    var mu=document.getElementById("music1");
+    mu.play()
+    window.open("certificate.html")
+ }
+    </script>
+</body>
+</html>

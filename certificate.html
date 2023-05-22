@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Give exam</title>
+     <link rel="shortcut icon" type="image/png" href="logo.png">
+    <style>
+        #container
+        {
+            margin-top: 30px;
+            width:80%;
+            height:50%;
+            background-color: whitesmoke;
+            border: 5px solid black;
+            padding-bottom: 150px;
+        }
+        #p1
+        {
+            color:red;
+        }
+    body 
+    {
+    background-image: url('img1.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed; 
+    background-size: 100% 100%;
+    
+  }
+    </style>
+</head>
+<body>
+  <center>
+    <h1>Provide this information for generation of certificate</h1>
+    <input type="text" id="inp1" placeholder="Enter your name" required>
+    <input type="text" id="inp2" placeholder="Please enter given code" required>
+    <button onclick="fun2()" style="color: yellow;background-color: black;cursor: pointer;">submit</button>
+    <button onclick="fun1('container')" disabled id="btn1" style="color: yellow;background-color: grey;cursor:not-allowed;">Download certificate</button>
+    <h3>Certificate preview</h3>
+    <div id="container">
+        <center>
+            <div class="contaner1">
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+            <h1>✨✨Hurrah! you have earned it✨✨</h1>
+        <img src="cong.png" height="100px",width="200px">
+        <h2 id="p1"></h2> 
+        <p>This Certificate is awarded to you for successful complition this exam.This exam is conducted by <em>GIVE EXAM</em> website.
+            Your score details is given below.You can earn this cerificate if your score is 50% or more.
+        </p> 
+        <h3 style="color:red;">Your score:</h3>
+        <h4 id="h12"></h4>
+        <h3 style="color:red;">Current time:</h3>
+        <h4 id="h14"></h4>
+        <p style="color: blue;">Awarded by:Give exam</p>
+        <br>
+        <br>
+        <img src="qrcode.png" width="200px" height="200px" style="margin-left: 550px;" alt="scan it">
+        <h5 style="margin-left: 560px;">Scan it</h5>
+    </div>
+       </center> 
+    </div>
+    
+</center>
+    <script type="text/javascript">
+        document.addEventListener('contextmenu', event => event.preventDefault());//this will disable left click
+        function fun2()
+        { 
+            var a=document.getElementById("inp1").value;
+            var b=document.getElementById("inp2").value;
+            if (a=='' || b=='')
+            {
+                alert("please provide all field with correct thing");
+            }
+            else
+            {
+            alert("successfully submitted");
+            document.getElementById("p1").innerHTML=a;
+            let current = new Date();
+            let cDate = current.getFullYear() + '-' + (current.getMonth() + 1) + '-' + current.getDate();
+            let cTime = current.getHours() + ":" + current.getMinutes() + ":" + current.getSeconds();
+            let dateTime ="Date: " +cDate + ' ' +"Time: " +cTime;
+            document.getElementById("h14").innerHTML=dateTime;
+            if(b=='g5')
+            {
+                document.getElementById("h12").innerHTML="50%";
+            }
+             else if(b=='h111')
+            {
+                document.getElementById("h12").innerHTML="60%";
+            }
+            else if(b=='ao1')
+            {
+                document.getElementById("h12").innerHTML="70%";
+            }
+           else if(b=='a31')
+            {
+                document.getElementById("h12").innerHTML="80%";
+            }
+            else if(b=='m05')
+            {
+                document.getElementById("h12").innerHTML="90%";
+            }
+            else if (b=="ki3")
+            {
+                document.getElementById("h12").innerHTML="100%"+" you are brilliant";
+            }
+             else
+             {
+                alert("please provide correct code.Stil you can download.but with out score it is not valid.");
+                document.getElementById("h12").innerHTML="This certificate is not valid.Because no score is there.";
+
+             }
+            // generate speech from text
+
+            if ('speechSynthesis' in window) { 
+            let working = new SpeechSynthesisUtterance("congratulation "+a); 
+            window.speechSynthesis.speak(working); 
+            } 
+            else{ 
+            alert("Browser doesnot support voice method");
+            } 
+            document.getElementById("btn1").disabled = false;
+            document.getElementById("btn1").style.backgroundColor ="black";
+            document.getElementById("btn1").style.cursor ="pointer";
+        }
+    }
+
+    function fun1(paravalue)
+    {
+        var backup=document.body.innerHTML;
+        var divcontent=document.getElementById(paravalue).innerHTML;
+        document.body.innerHTML=divcontent;
+        window.print();
+        document.body.innerHTML=backup;
+    }
+    </script>
+</body>
+</html>
