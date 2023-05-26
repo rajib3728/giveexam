@@ -5,3 +5,4 @@ instruction:
 3.you have to keep the given code other wise you cannot download  valid certificate.
 4.After pressing start button you can see all the question.
 5.don't refresh your page between your exam.
+6.certificate is not valid if there is no score is present.
